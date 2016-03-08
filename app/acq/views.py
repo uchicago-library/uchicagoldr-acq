@@ -10,3 +10,16 @@ def front():
     except TemplateNotFound:
         abort(404)
 
+@acquistions.route("/list")
+def list():
+    try:
+        return render_template('list.html')
+    except TemplateNotFound:
+        abort(404)
+
+@acquistions.route("/record")
+def record():
+    try:
+        return render_template("record.html")
+    except TemplateNotFound:
+        abort(404)
