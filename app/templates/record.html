@@ -1,1 +1,78 @@
 {% extends "base.html" %}
+
+{% block content %}
+
+<form class="form">
+    <div class="form-group">
+        <fieldset>
+            <legend>Donor</legend>
+            <label for="name">Donor's first name</label>
+            <input type="text" id="donorFirstName" class="form-control"/>
+            <label for="name">Donor's last name</label>
+            <input type="text" id="donorLastName"  cols="1" class="form-control"/>
+            
+            <label for="email">Donor's email</label>
+            <input type="text" id="donorEmail" clsas="form-control"/>
+            
+            <label for="donorPhoneNumber">Donor's phone number</label>
+            <input type="text" id="donorPhoneNumber" class="form-control"/>
+        </fieldset>
+    </div>
+    
+    <div class="form-group">
+        <label for="spanDate">Span Date</label>
+        <input type="text" class="form-control" id="spanDate" placeholder="Enter a date range">
+    </div>
+   
+    <div class="form-group">
+        <label for="type">Type</label>
+        <input type="text" class="form-control" id="type" placeholder="Enter a type of material">
+    </div>
+    
+    <div class="form-group">
+        <label for="prc">PRC</label>
+        <input type="text" class="form-control" id="prc" placeholder="Enter a prc">
+    </div>
+   
+    <div class="form-group">
+        <label for="rights">Rights</label>
+        <textarea class="form-control" rows="3" id="rights"></textarea>
+    </div>
+   
+    <div class="form-group">
+        <label for="restrictions"restrictions">Restrictions</label>
+        <textarea class="form-control" rows="3" id="restrictions"></textarea>
+    </div>
+    
+    
+    <div class="checkbox">
+        <label><input type="checkbox"> Send Inventory Required</label>
+    </div>
+    
+    <div class="checkbox">
+        <label><input type="checkbox"/> Receipt Letter Sent</label>
+    </div>
+    
+    <div class="checkbox">
+        <label><input type="checkbox"/> Inventory sents</label>
+    </div>
+    
+    <div class="checkbox">
+        <label><input type="checkbox"/> Gift acknowledgement required</label>
+    </div>
+    
+    <div class="checkbox">
+        <label><input type="checkbox"/> Gift acknowledgement received</label>
+    </div>
+    
+    <div class="checkbox">
+        <label><input type="checkbox"/> Access</label>
+    </div>
+    
+    <div class="checkbox">
+        <label><input type="checkbox"/> Discover</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+{% endblock %}

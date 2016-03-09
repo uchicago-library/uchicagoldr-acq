@@ -1,1 +1,4 @@
+app/static/bootstrap/*
 static/bootstrap/*
+.idea/*
+*__pycache__*
