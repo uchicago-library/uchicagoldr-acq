@@ -1,78 +1,349 @@
 {% extends "base.html" %}
 
+{% block title %}
+Library Digital Repository Acquisition Recording
+{% endblock %}
+
+{% block header %}
+Acquisition Record Creation
+{% endblock %}
+
+{% block headerDescription %}
+Follow the instructions in the form below and click Save when you are done in order to create a new acquisition record for the LDR.
+{% endblock %}
+
 {% block content %}
 
-<form class="form">
-    <div class="form-group">
-        <fieldset>
-            <legend>Donor</legend>
-            <label for="name">Donor's first name</label>
-            <input type="text" id="donorFirstName" class="form-control"/>
-            <label for="name">Donor's last name</label>
-            <input type="text" id="donorLastName"  cols="1" class="form-control"/>
+<form class="form" method="post" action="/record">
+    <fieldset>
+        <legend>Acquisition Record</legend>
+
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="accessionNumber">Accession no.</label>
+                    <input type="text" id="accessionNumber" class="form-control"
+                           placeholder="Enter an identifier matching the following scheme: NNNN-NNN where N is a single numeral"/>
+                </div>
+            </div>
             
-            <label for="email">Donor's email</label>
-            <input type="text" id="donorEmail" clsas="form-control"/>
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="department">Department <a href="#addDepartment">+</a></label>
+                    <input type="text" id="department" class="form-control" placeholder="Enter the name of the department that this acquisition is from"/>
+                </div>
+
+            </div>
+                
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="summary">Summary</label>
+                    <textarea id="summary" class="form-control" placeholder="Describe the acquisition in as much detail as reasonably possible"></textarea>
+                </div>
+            </div>
+                
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="fiscalYear">Fiscal year</label>
+                    <input type="text" id="fiscalYear" class="form-control" placeholder="Enter a string matching the following scheme: NNNN where N is a single numeral"/>
+                </div>
+            </div>
             
-            <label for="donorPhoneNumber">Donor's phone number</label>
-            <input type="text" id="donorPhoneNumber" class="form-control"/>
-        </fieldset>
-    </div>
-    
-    <div class="form-group">
-        <label for="spanDate">Span Date</label>
-        <input type="text" class="form-control" id="spanDate" placeholder="Enter a date range">
-    </div>
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="collectionTitle">Collection title</label>
+                    <input type="text" id="collectionTitle" class="form-control" placeholder="Enter the formal title of the collection to which this acquisition belongs"/>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="eadId">EAD Identifier</label>
+                    <input type="text" id="eadId" class="form-control" placeholder="Enter the formal ead identifier for the collection to which this acquisition belongs."/>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="spanDate">Span Date</label>
+                    <input type="text" class="form-control" id="spanDate" placeholder="Enter a date range following this example: 1994-1998">
+                </div>
+            </div>
    
-    <div class="form-group">
-        <label for="type">Type</label>
-        <input type="text" class="form-control" id="type" placeholder="Enter a type of material">
-    </div>
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="type">Type</label>
+                    <input type="text" class="form-control" id="type" placeholder="Enter the formal identiifer for the type of this acquisition">
+                </div>
+            </div>
     
-    <div class="form-group">
-        <label for="prc">PRC</label>
-        <input type="text" class="form-control" id="prc" placeholder="Enter a prc">
-    </div>
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="prc">PRC</label>
+                    <input type="text" class="form-control" id="prc" placeholder="Enter a prc">
+                </div>
+            </div>
    
-    <div class="form-group">
-        <label for="rights">Rights</label>
-        <textarea class="form-control" rows="3" id="rights"></textarea>
-    </div>
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="rights">Rights</label>
+                    <textarea class="form-control" rows="3" id="rights" placeholder="Enter a statement about the legal rights for this acquisition."></textarea>
+                </div>
+            </div>
    
-    <div class="form-group">
-        <label for="restrictions"restrictions">Restrictions</label>
-        <textarea class="form-control" rows="3" id="restrictions"></textarea>
-    </div>
-    
-    
-    <div class="checkbox">
-        <label><input type="checkbox"> Send Inventory Required</label>
-    </div>
-    
-    <div class="checkbox">
-        <label><input type="checkbox"/> Receipt Letter Sent</label>
-    </div>
-    
-    <div class="checkbox">
-        <label><input type="checkbox"/> Inventory sents</label>
-    </div>
-    
-    <div class="checkbox">
-        <label><input type="checkbox"/> Gift acknowledgement required</label>
-    </div>
-    
-    <div class="checkbox">
-        <label><input type="checkbox"/> Gift acknowledgement received</label>
-    </div>
-    
-    <div class="checkbox">
-        <label><input type="checkbox"/> Access</label>
-    </div>
-    
-    <div class="checkbox">
-        <label><input type="checkbox"/> Discover</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="restrictions">Restrictions</label>
+                    <textarea class="form-control" rows="3" id="restrictions" placeholder="Enter a statement about the legal restrictions on this acquisition"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="restrictionsComments">Restriction Comments</label>
+                    <textarea rows="3" class="form-control" id="restrictionsComments" placeholder="Enter a statement describing why the restrictions exist for this acquisition"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="physicalLocation">Physical Location</label>
+                    <input type="text" class="form-control" id="physicalLocation" placeholder="Enter the physical location of this acquisition"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="filesReceivedDate">Files Received Date</label>
+                    <input type="text" class="form-control" id="filesReceivedDate" placeholder="Enter the date that the SCRC received the files as YYYY-MM-DD"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-xs-12">
+                    <label for="filesStagedDate">Files Staged Date</label>
+                    <input type="text" class="form-control" id="filesStagedDate" placeholder="Enter the date the files were staged into the LDR as YYYY-MM-DD"/>
+                </div>
+            </div>
+
+            <fieldset>
+                <legend>Donor <a href="#addDonor">+</a></legend>
+                <div class="form-group row">
+                    <div class="col-xs-5">
+                        <input type="text" id="donorFirstName" class="form-control" placeholder="Enter a donor's first name"/>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" id="donorLastName" class="form-control" placeholder="Enter a donor's last name"/>
+                    </div>
+                    <div class="col-xs-1">
+                        <a href="#addDonorName">+</a>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-11">
+                        <input type="text" id="donorEmail" class="form-control" placeholder="Enter the donor's email address"/>
+                    </div>
+                    <div class="col-xs-1">
+                        <a href="#addDonorEmail">+</a>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-11">
+                        <input type="text" id="donorPhoneNumber" class="form-control" placeholder="Enter the donor's phone number"/>
+
+                    </div>
+                    <div class="col-xs-1">
+                        <a href="#addDonorPhoneNumber">+</a>
+                    </div>
+                </div>
+                <fieldset>
+                    <legend>Donor Address <a href="#addDonorAddress">+</a></legend>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <input type="text" id="donorStreetAddressNumber" class="form-control" placeholder="street number"/>
+                        </div>
+                        <div class="col-xs-7">
+                            <input type="text" id="donorStreetAddressName" class="form-control" placeholder="street name"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="text" id="donorStreetAddressUnitNumber" class="form-control" placeholder="unit no."/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-7">
+                            <div class="form-group">
+                            <input type="text" id="donorStreetAddressCity" class="form-control" placeholder="city"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="form-group">
+                            <input type="text" id="donorStreetAddressState" class="form-control" placeholder="state"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                            <input type="text" id="donorStreetAddressZipCode" class="form-control" placeholder="zipcode"/>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            
+            </fieldset>
+
+            <fieldset>
+                <legend>Source <a href="#addSource">+</a></legend>
+                <div class="form-group row">
+                    <div class="col-xs-5">
+                        <input type="text" id="sourceFirstName" class="form-control" placeholder="Enter the source's first name"/>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" id="sourceLastName" class="form-control" placeholder="Enter the source's last name"/>
+                    </div>
+                    <div class="col-xs-1">
+                        <a href="#addSourceName">+</a>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-11">
+                        <input type="text" id="sourceEmail" class="form-control" placeholder="Enter the source's email address"/>
+                    </div>
+                    <div class="col-xs-1">
+                        <a href="#addDnorEmail">+</a>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-xs-11">
+                        <input type="text" id="sourcePhoneNumber" class="form-control" placeholder="Enter the source's phone number"/>
+                    </div>
+                    <div class="col-xs-1">
+                        <a href="#addDonorPhoneNumber">+</a>
+                    </div>
+                </div>
+                <fieldset>
+                    <legend>Source Address <a href="#addSourceAddress">+</a></legend>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <input type="text" id="sourceStreetAddressNumber" class="form-control" placeholder="street number"/>
+                        </div>
+                        <div class="col-xs-7">
+                            <input type="text" id="sourceStreetAddressName" class="form-control" placeholder="street name"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <input type="text" id="sourceStreetAddressUnitNumber" class="form-control" placeholder="unit no."/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-7">
+                            <div class="form-group">
+                            <input type="text" id="sourceStreetAddressCity" class="form-control" placeholder="city"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="form-group">
+                            <input type="text" id="sourceStreetAddressState" class="form-control" placeholder="state"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                            <input type="text" id="sourceStreetAddressZipCode" class="form-control" placeholder="zipcode"/>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            
+            </fieldset>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <label for="origin">Origin</label>
+                <input type="text" class="form-control" id="origin" placeholder="Enter a statement about the origin of this acquisition"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="access"/> Access</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="discover"/> Discover</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <label for="administrativeComments">Administrative Comments</label>
+                <textarea rows="3" class="form-control" id="administrativeComments" placeholder="Enter a statement that may be of use to the Digital Accessions Specialist but is not defined anywhere else in this record"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="receiptLetterRequired"/> Receipt Letter Required</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="receiptLetterSent"/> Receipt Letter Sent</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="inventorySent"/> Inventory sent</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="giftAcknowledgementRequired"/> Gift acknowledgement required <a href="#addGiftAcknowledgementRequired">+</a></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <div class="checkbox">
+                    <label><input type="checkbox" id="giftAcknowledgementReceived"/> Gift acknowledgement received <a href="#addGiftAcknowledgementReceived">+</a></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <textarea rows="3" class="form-control" id="accessDescription" placeholder="Enter a statement describing the access purpose of this acquisition"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <label for="receivedBy">Received By</label>
+                <input type="text" class="form-control" id="receivedBy" placeholder="Enter the name of the individual who received this acquisition from the depositor"/>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-xs-12">
+                <label for="physicalMedia">Physical Media</label>
+                <textarea class="form-control" id="physicalMedia" placeholder="Describe the physical media that may be part of this acquisition"></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </fieldset>
 </form>
 
 {% endblock %}

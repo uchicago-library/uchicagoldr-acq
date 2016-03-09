@@ -1,1 +1,24 @@
 {% extends "base.html" %}
+
+{% block title %}
+Library Digital Repository Acquistions Listing
+{% endblock %}
+
+{% block header %}
+Acquisition Record Listing
+{% endblock %}
+
+{% block headerDescription %}
+Below are all the un-acted-upon acquisitions for the ldr
+{% endblock %}
+
+{% block content %}
+
+<dl>
+    {% for record in records %}
+    <dt>Acquisition record: {{ record.accessionNo }}</dt>
+    <dd>received on {{ record.receiveDate }}</dd>
+    {% endfor %}
+</dl>
+
+{% endblock %}

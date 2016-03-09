@@ -2,17 +2,19 @@
 <html lang="en">
     <head>
     <link rel="stylesheet" href="static/bootstrap/css/bootstrap.css" type="text/css"/>
-    <title>{% block title %}{%endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
         <div class="container">
             <div class="row">
               <div class="col-xs-12">
                   <h1>
-                      Library Digital Repository Acquisitions Recording
-
+                      {% block header %}
+                      {% endblock %}
                   </h1>
-                  <p>A place for recording ldr acquisitions</p>
+                  <p>
+                      {% block headerDescription %}{% endblock %}
+                  </p>
               </div>
             </div>
             <hr>
